@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCool HVAC Services | Heating & Cooling Experts</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #f57c00;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn.primary {
+            background-color: var(--primary);
+        }
+
+        .btn.secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn.secondary:hover {
+            background-color: #e65100;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .header-contact p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        .header-contact .btn {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #1a73e8;
+            color: var(--white);
+            padding: 180px 0 100px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero-content h2::after {
+            display: none;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .about-text li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .about-text li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .about-image {
+            background-color: #e9ecef;
+            height: 400px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-style: italic;
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .contact-item a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .header-contact {
+                margin-top: 10px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services,
+            .about,
+            .contact {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>ProCool HVAC</h1>
+                <span>Heating & Cooling Experts</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <p>24/7 Emergency Service</p>
+                <a href="tel:555-123-4567" class="btn">(555) 123-4567</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Professional HVAC Services You Can Trust</h2>
+                <p>24/7 emergency repairs, installations, and maintenance for all your heating and cooling needs</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn primary">Schedule Service</a>
+                    <a href="tel:555-123-4567" class="btn secondary">Emergency Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our HVAC Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3>Air Conditioning</h3>
+                    <p>Installation, repair, and maintenance of all AC systems to keep you cool all summer.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔥</div>
+                    <h3>Heating Systems</h3>
+                    <p>Furnace installation, repair, and maintenance for efficient winter warmth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>HVAC Maintenance</h3>
+                    <p>Regular tune-ups to extend system life and prevent costly breakdowns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💨</div>
+                    <h3>Ventilation</h3>
+                    <p>Improve indoor air quality with proper ventilation system installation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌡️</div>
+                    <h3>Thermostats</h3>
+                    <p>Smart thermostat installation for better control and energy savings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Emergency Repairs</h3>
+                    <p>24/7 emergency service when your system fails unexpectedly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About ProCool HVAC</h2>
+                    <p>With over 15 years of experience, ProCool HVAC has been the trusted choice for residential and commercial heating and cooling solutions in our community.</p>
+                    <p>Our certified technicians are committed to providing top-quality service, honest pricing, and lasting solutions for all your HVAC needs.</p>
+                    <ul>
+                        <li>Licensed & Insured Technicians</li>
+                        <li>24/7 Emergency Service</li>
+                        <li>Upfront Pricing - No Hidden Fees</li>
+                        <li>Satisfaction Guaranteed</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    Trusted HVAC Professionals Since 2008
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us Today</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <h4>Phone</h4>
+                        <p><a href="tel:555-123-4567">(555) 123-4567</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:service@procoolhvac.com">service@procoolhvac.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Service Area</h4>
+                        <p>Serving the Greater Metro Area</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Hours</h4>
+                        <p>24/7 Emergency Service Available</p>
+                        <p>Monday - Friday: 8am - 6pm</p>
+                        <p>Saturday: 9am - 4pm</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Request Service</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="ac-repair">AC Repair</option>
+                                <option value="ac-installation">AC Installation</option>
+                                <option value="heating-repair">Heating Repair</option>
+                                <option value="heating-installation">Heating Installation</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="emergency">Emergency Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ProCool HVAC</h3>
+                    <p>Your trusted partner for all heating and cooling needs.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">AC Services</a></li>
+                        <li><a href="#services">Heating Services</a></li>
+                        <li><a href="#services">Maintenance</a></li>
+                        <li><a href="#services">Emergency Repairs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: service@procoolhvac.com</p>
+                    <p>24/7 Emergency Service Available</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ProCool HVAC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
